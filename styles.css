@@ -12,12 +12,12 @@ body {
 header {
     background-color: #111;
     color: #40e07d; /* Green text */
-    padding: 20px;
+    padding: 35px;
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    height:10%;
+    height:100px;
     z-index: 1000;
     display: flex;
     align-items: center;
