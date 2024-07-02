@@ -1,23 +1,48 @@
-/* styles.css */
-
+/* Reset and basic styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #0f0; /* Green text */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Header styling */
 header {
-    background-color: #14194f;
-    color: #fff;
-	text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
+    background-color: #111;
+    color: #0f0; /* Green text */
+    padding: 20px;
+    position: sticky;
     top: 0;
+    left: 0;
+    width: 100%;
+    height:10%;
     z-index: 1000;
+    display: flex;
+    align-items: center;
 }
 
+/* ASCII Art styling */
+.ascii-art {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.ascii-art pre {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+/* Header content styling */
+.header-content {
+    flex: 1; /* Take remaining space */
+}
+
+.header-content h1 {
+    margin: 0;
+}
+
+/* Navigation styling */
 nav ul {
     list-style: none;
     padding: 0;
@@ -29,71 +54,53 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #0f0; /* Green text */
     text-decoration: none;
     padding: 10px;
 }
 
 nav ul li a:hover {
-    background-color: #555;
+    background-color: #333;
     border-radius: 5px;
 }
 
+/* Main content styling */
 main {
-    padding: 80px 20px 20px;
+    padding-top: 140px; /* Adjust according to header and margin needs */
+    padding-bottom: 60px; /* Adjust according to footer height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: calc(100vh - 140px); /* Adjust height if necessary */
 }
 
+/* Article section styling */
+#latest-articles {
+    margin-top: 20px;
+}
+
+#latest-articles h2 {
+    color: #0f0; /* Green text */
+}
+
+.article {
+    margin-bottom: 20px;
+}
+
+.article h3 {
+    font-size: 1.2em;
+}
+
+.article p {
+    color: #aaa; /* Light gray text */
+}
+
+/* Footer styling */
 footer {
-    background-color: #14194f;
-    color: #fff;
+    background-color: #111;
+    color: #0f0; /* Green text */
     text-align: center;
     padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-input[type="submit"] {
-    background-color: #14194f;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #555;
-}
-@media (max-width: 600px) {
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
-
-    main {
-        padding: 100px 10px 20px;
-    }
+    z-index: 1000; /* Ensure footer stays above main content */
 }
