@@ -2,7 +2,7 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #000;
-    color: #0f0; /* Green text */
+    color: #40e07d; /* Green text */
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -11,7 +11,7 @@ body {
 /* Header styling */
 header {
     background-color: #111;
-    color: #0f0; /* Green text */
+    color: #40e07d; /* Green text */
     padding: 20px;
     position: sticky;
     top: 0;
@@ -54,7 +54,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #0f0; /* Green text */
+    color: #40e07d; /* Green text */
     text-decoration: none;
     padding: 10px;
 }
@@ -78,7 +78,7 @@ main {
 }
 
 #latest-articles h2 {
-    color: #0f0; /* Green text */
+    color: #40e07d; /* Green text */
 }
 
 .article {
@@ -96,7 +96,7 @@ main {
 /* Footer styling */
 footer {
     background-color: #111;
-    color: #0f0; /* Green text */
+    color: #40e07d; /* Green text */
     text-align: center;
     padding: 10px 0;
     position: fixed;
