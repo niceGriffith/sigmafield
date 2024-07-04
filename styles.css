@@ -8,76 +8,66 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-pre#normal {font-size: 100%}
-pre#smaller {font-size: 50%}
-pre#smallest {font-size: 20%}
+pre#normal { font-size: 100%; }
+pre#smaller { font-size: 50%; }
+pre#smallest { font-size: 20%; }
 
 #scroll-container {
-  border: 3px solid black;
-  border-radius: 5px;
-  overflow: hidden;
+    border: 3px solid black;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 #scroll-text {
-  text-align: right;
+    text-align: right;
 
-  /* animation properties */
-  -moz-transform: translateX(-100%);
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
-  
-  -moz-animation: my-animation 15s linear infinite;
-  -webkit-animation: my-animation 15s linear infinite;
-  animation: my-animation 15s linear infinite;
+    /* animation properties */
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    
+    -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite;
+    animation: my-animation 15s linear infinite;
 }
 
 /* for Firefox */
 @-moz-keyframes my-animation {
-  from { -moz-transform: translateX(-100%); }
-  to { -moz-transform: translateX(100%); }
+    from { -moz-transform: translateX(-100%); }
+    to { -moz-transform: translateX(100%); }
 }
 
 /* for Chrome */
 @-webkit-keyframes my-animation {
-  from { -webkit-transform: translateX(-100%); }
-  to { -webkit-transform: translateX(100%); }
+    from { -webkit-transform: translateX(-100%); }
+    to { -webkit-transform: translateX(100%); }
 }
 
 @keyframes my-animation {
-  from {
-    -moz-transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-  to {
-    -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-  }
+    from {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    to {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
 }
+
 /* Header styling */
 header {
     background-color: #111;
     color: #40e07d; /* Green text */
-    padding: 35px;
+    padding: 20px;
     position: sticky;
     top: 0;
-    left: 0;
     width: 100%;
-    height:100px;
     z-index: 1000;
     display: flex;
     align-items: center;
-}
-
-/* ASCII Art styling */
-.ascii-art {
-    margin-right: 20px; /* Adjust as needed */
-}
-
-.ascii-art pre {
-    font-size: 1.5em;
-    margin: 0;
+    flex-wrap: wrap;
 }
 
 /* Header content styling */
@@ -89,14 +79,20 @@ header {
     margin: 0;
 }
 
+.header-content p {
+    margin: 5px 0;
+}
+
 /* Navigation styling */
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    display: inline;
     margin-right: 10px;
 }
 
@@ -113,10 +109,8 @@ nav ul li a:hover {
 
 /* Main content styling */
 main {
-    padding-top: 140px; /* Adjust according to header and margin needs */
-    padding-bottom: 60px; /* Adjust according to footer height */
+    padding: 20px;
     overflow-y: auto; /* Enable vertical scrolling */
-    height: calc(100vh - 140px); /* Adjust height if necessary */
 }
 
 /* Article section styling */
@@ -129,7 +123,7 @@ main {
 }
 
 #latest-articles h3 {
-    color: #458588; /* Green text */
+    color: #458588; /* Different shade of green text */
 }
 
 .article {
@@ -138,7 +132,7 @@ main {
 
 .article h3 {
     font-size: 1.2em;
-	color: #458588;
+    color: #458588;
 }
 
 .article p {
@@ -151,8 +145,30 @@ footer {
     color: #40e07d; /* Green text */
     text-align: center;
     padding: 10px 0;
-    position: fixed;
-    bottom: 0;
+    position: relative;
     width: 100%;
     z-index: 1000; /* Ensure footer stays above main content */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        width: 100%;
+        display: block;
+    }
 }
