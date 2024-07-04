@@ -8,6 +8,53 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+pre#normal {font-size: 100%}
+pre#smaller {font-size: 50%}
+pre#smallest {font-size: 20%}
+
+#scroll-container {
+  border: 3px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#scroll-text {
+  text-align: right;
+
+  /* animation properties */
+  -moz-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateX(-100%); }
+  to { -moz-transform: translateX(100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(-100%); }
+  to { -webkit-transform: translateX(100%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  to {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
 /* Header styling */
 header {
     background-color: #111;
@@ -81,12 +128,17 @@ main {
     color: #40e07d; /* Green text */
 }
 
+#latest-articles h3 {
+    color: #458588; /* Green text */
+}
+
 .article {
     margin-bottom: 20px;
 }
 
 .article h3 {
     font-size: 1.2em;
+	color: #458588;
 }
 
 .article p {
