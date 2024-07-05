@@ -38,7 +38,7 @@ abbr:where([title]) {
     text-decoration: underline dotted
 }
 a {
-    color: inherit;
+    color: maroon;
     text-decoration: inherit
 }
 
@@ -1542,4 +1542,104 @@ footer {
     z-index: 1000; /* Ensure footer stays above main content */
 }
 
-/* Media Queries for Responsive Design */
+.my-class {
+    -webkit-animation:name 3s infinite;
+}
+
+@keyframes name {
+    0% {color:purple;}
+	50% {color:maroon;}
+    100% {color:magenta;}
+}
+
+.wave-text {
+  display: flex;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.wave-text span {
+  color: blue;
+  animation: wave 3s infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    color: blue;
+  }
+  50% {
+    color: red;
+  }
+}
+
+.wave-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.wave-text span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.wave-text span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.wave-text span:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.wave-text span:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+.wave-text span:nth-child(6) {
+  animation-delay: 1.5s;
+}
+
+.wave-text span:nth-child(7) {
+  animation-delay: 1.8s;
+}
+
+.wave-text span:nth-child(8) {
+  animation-delay: 2.1s;
+}
+
+.wave-text span:nth-child(9) {
+  animation-delay: 2.4s;
+}
+
+.wave-text span:nth-child(10) {
+  animation-delay: 2.7s;
+}
+
+.wave-text span:nth-child(11) {
+  animation-delay: 3s;
+}
+
+.wave-text span:nth-child(12) {
+  animation-delay: 3.3s;
+}
+
+.wave-text span:nth-child(13) {
+  animation-delay: 3.6s;
+}
+
+.wave-text span:nth-child(14) {
+  animation-delay: 3.9s;
+}
+
+.wave-text span:nth-child(15) {
+  animation-delay: 4.2s;
+}
+
+.wave-text span:nth-child(16) {
+  animation-delay: 4.5s;
+}
+
+.wave-text span:nth-child(17) {
+  animation-delay: 4.8s;
+}
+
+.wave-text span:nth-child(18) {
+  animation-delay: 5.1s;
+}
