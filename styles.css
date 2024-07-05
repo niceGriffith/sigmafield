@@ -37,7 +37,6 @@ abbr:where([title]) {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted
 }
-
 a {
     color: inherit;
     text-decoration: inherit
@@ -149,7 +148,7 @@ fieldset,legend {
 }
 
 menu,ol,ul {
-    list-style: none;
+	list-style: square inside url("sqgreen.gif");
     margin: 0;
     padding: 0
 }
@@ -1392,6 +1391,7 @@ body {
 .__className_b25959 {
     font-family: __font_b25959,__font_Fallback_b25959,sans-serif
 }
+
 /* Reset and basic styling */
 body {
     font-family: 'Courier New', Courier, monospace;
@@ -1404,7 +1404,7 @@ body {
 
 pre#normal { font-size: 100%; }
 pre#smaller { font-size: 50%; }
-pre#smallest { font-size: 20%; }
+pre#smallest { font-size: xx-small; }
 
 #scroll-container {
     border: 3px solid black;
@@ -1456,12 +1456,10 @@ header {
     color: #40e07d; /* Green text */
     padding: 20px;
     position: sticky;
-    top: 0;
     width: 100%;
     z-index: 1000;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 /* Header content styling */
@@ -1545,24 +1543,3 @@ footer {
 }
 
 /* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    nav ul li a {
-        width: 100%;
-        display: block;
-    }
-}
