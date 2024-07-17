@@ -1531,6 +1531,20 @@ main {
     color: #aaa; /* Light gray text */
 }
 
+#Tools {
+    margin-top: 20px;
+}
+
+#Tools h2 {
+    color: #92cbf7; /* Green text */
+}
+
+#Tools h3 {
+    color: #458588; /* Different shade of green text */
+}
+
+
+
 /* Footer styling */
 footer {
     background-color: #111;
@@ -1543,19 +1557,19 @@ footer {
 }
 
 .my-class {
+	color: purple;
     -webkit-animation:name 3s infinite;
 }
 
 @keyframes name {
-    0% {color:purple;}
-	50% {color:maroon;}
-    100% {color:magenta;}
+    0% ,100%{color:purple;}
+    50% {color:yellow;}
 }
-
 .wave-text {
-  display: flex;
+  display: inline-block;
   font-size: 2em;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .wave-text span {
@@ -1643,3 +1657,44 @@ footer {
 .wave-text span:nth-child(18) {
   animation-delay: 5.1s;
 }
+
+hr {
+  margin: 24px 0;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block;
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+#socials a {
+		grid-row:1 / span 1 ;
+        margin: 0 8px;
+        text-decoration: none;
+      }
+      #socials a img {
+        height: 32px;
+      }
+
+      span.separator-bar {
+        margin: 0 4px;
+      }
+
+      @media print {
+        #socials a {
+          display: inline-flex;
+          align-items: center;
+        }
+        #socials a img {
+          height: 16px;
+          margin-right: 4px;
+        }
+      }
