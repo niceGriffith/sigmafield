@@ -4,7 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
+	<link rel="icon" href="pngegg.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+	<style>
+	.glitch-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .glitch-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glitch-button:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .glitch-button:hover:before {
+            opacity: 1;
+        }
+
+        .glitch-text {
+            font-size: 2rem;
+            color: #0f0;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #f00;
+            background: #000;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitch-animation 2s infinite linear;
+        }
+
+        .glitch-text::after {
+            color: #0ff;
+            left: 2px;
+            text-shadow: -2px 0 #0ff;
+            animation: glitch-animation 2s infinite linear reverse;
+        }
+
+        @keyframes glitch-animation {
+            0% {
+                clip: rect(0, 900px, 0, 0);
+                transform: skew(0.3deg);
+            }
+            10% {
+                clip: rect(16px, 900px, 44px, 0);
+                transform: skew(0.3deg);
+            }
+            20% {
+                clip: rect(85px, 900px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            30% {
+                clip: rect(45px, 900px, 60px, 0);
+                transform: skew(0.3deg);
+            }
+            40% {
+                clip: rect(30px, 900px, 74px, 0);
+                transform: skew(0.3deg);
+            }
+            50% {
+                clip: rect(95px, 900px, 144px, 0);
+                transform: skew(0.3deg);
+            }
+            60% {
+                clip: rect(66px, 900px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            70% {
+                clip: rect(100px, 900px, 101px, 0);
+                transform: skew(0.3deg);
+            }
+            80% {
+                clip: rect(36px, 900px, 55px, 0);
+                transform: skew(0.3deg);
+            }
+            90% {
+                clip: rect(85px, 900px, 150px, 0);
+                transform: skew(0.3deg);
+            }
+            100% {
+                clip: rect(16px, 900px, 40px, 0);
+                transform: skew(0.3deg);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -57,15 +168,26 @@
 	</pre>
 	</center>
         <h2>My Story</h2>
-		<p>Hey there! I’m Debaditya Chakraborty, currently wrapping up my final year at the University of Calcutta, where I’m diving deep into the world of Statistics. Soon, I’ll be embarking on a new adventure for my Master’s, possibly at the University of Hyderabad or BHU—exciting times ahead!</p>
-        <p>I’m fascinated by everything numbers, especially when it comes to Time-series Analysis, Statistical Inference, Sports Analytics, Machine Learning & AI, and Quant Finance. When I’m not crunching numbers, you’ll probably find me with my nose in a book or participating in a quiz—always up for a challenge!</p>
-        <p>I’m a sports enthusiast through and through, whether it's smashing sixes on the cricket field or scoring goals in football. Research is my happy place, where I get to explore and innovate—it's the pinnacle of human creativity in my eyes. I’m passionate about making a positive impact through my work and contributing to the betterment of human life.</p>
-        <p>Always on the lookout for new opportunities to showcase my skills and make a difference, I can’t wait to see what the future holds. Thanks for stopping by to get to know me a bit better!</p>
+		<p>Hey there! I’m Debaditya Chakraborty, currently a first year Masters Student in Statistics at the University of Hyderabad.</p>
+		<br>
+        <p> My Academic interests are - Time-series Analysis, Statistical Inference, Sports Analytics, Machine Learning & AI and Quant Finance.</p>
+        <p>MY hobbies/Passion(Basically things i would've done if society didn't punish me into earning money) - Cooking(Possible Career Path if I was bad at studying), Reading Books, Quizzing(Been doing this since class 5), Also Reading about things which are not in my course work(Which i do
+		more frequently than actually studying) such as Human History, Politics , Psychology & Philosophy. I am also a huge football fan, if you're nearby and want a person to play football(or any other game) just contact me. 
+		And last but not least i also love watching movies and playing video games. Ok writing this made me realise why my grades don't improve much ;__;
+		<br>
+		My career goal is to do something imapctful for the society, this sounds naive but the point is i do not wish to be forgotten and want to do something which makes such a difference that maybe for some few hundred years people do remember 
+		my name, this is also the reason why i wish to work as a researcher..</p>
+        <br>
+		<p>Anyways i am always on the lookout for new opportunities to showcase my skills and make a difference, If you liked any of this mumbo jumbo please let me know.
+		
+		Also Thanks for stopping by to get to know me a bit better!</p>
+		<br>
 		
 		</p>
     </main>
     <footer>
         <p>&copy; 2024 Debaditya Chakraborty</p>
     </footer>
+	<canvas id="matrixCanvas"></canvas>
 </body>
 </html>
