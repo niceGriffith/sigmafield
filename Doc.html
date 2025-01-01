@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galton Board Effect</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #0f0;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .container {
+            width: 80%;
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+            top: 10%;
+        }
+
+        .falling-char {
+            position: absolute;
+            font-size: 24px;
+            animation: fall 2s ease-in forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh - 60px));
+                opacity: 1;
+            }
+        }
+
+        .normal-distribution {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bucket {
+            width: 30px;
+            height: 20px;
+            background-color: #0f0;
+            margin: 5px;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+        }
+
+        .bucket span {
+            position: absolute;
+            top: -30px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="textContainer">
+        <!-- The paragraph that will be turned into falling characters -->
+        <p id="text">fugvhgvvbdsbjbzxxkb   sabdas dknas jdsakd sahdbas sadvabs a duasbdbas dasdasdasbsafak dbasdiasdkjasbdasbdjasasasas askdnk asbdkjhasiuhaskjfgasdkasvasbfjgfkjasgdasdvasbasdbasj dsad.</p>
+    </div>
+
+    <!-- Normal distribution buckets -->
+    <div class="normal-distribution" id="buckets">
+        <div class="bucket" data-bucket="1"><span></span></div>
+        <div class="bucket" data-bucket="2"><span></span></div>
+        <div class="bucket" data-bucket="3"><span></span></div>
+        <div class="bucket" data-bucket="4"><span></span></div>
+        <div class="bucket" data-bucket="5"><span></span></div>
+        <div class="bucket" data-bucket="6"><span></span></div>
+        <div class="bucket" data-bucket="7"><span></span></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const textContainer = document.getElementById('textContainer');
+            const textElement = document.getElementById('text');
+            const buckets = document.querySelectorAll('.bucket span');
+
+            const text = textElement.innerText;
+            textElement.style.display = 'none';
+
+            // Randomly distribute the characters into buckets
+            text.split('').forEach((char, index) => {
+                const fallingChar = document.createElement('span');
+                fallingChar.innerText = char;
+                fallingChar.className = 'falling-char';
+                fallingChar.style.left = `${Math.random() * 100}%`;
+                fallingChar.style.animationDelay = `${index * 0.1}s`;
+                
+                // Randomly assign a bucket based on a normal distribution
+                const random = Math.floor(Math.random() * 7) + 1;
+                fallingChar.dataset.bucket = random;
+
+                // Append the character to the container
+                textContainer.appendChild(fallingChar);
+
+                // After animation ends, move the character to the bucket
+                fallingChar.addEventListener('animationend', function () {
+                    buckets[random - 1].innerText += char;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
