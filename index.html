@@ -6,9 +6,35 @@
     <title>Welcome</title>
 	<link rel="icon" href="pngegg.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-	<script src="scripts.js" defer></script>
+
+
+	<style>
+    :root{
+        --bg:#080b0f; --surface:#0d1117; --card:#111820; --lime:#c6f135; --cyan:#00e5ff; --muted:#4a5568; --text:#e2e8f0; --dim:#8899aa;
+    }
+    body{background:var(--bg);color:var(--text);}
+    /* custom cursor */
+    #cursor{position:fixed;width:10px;height:10px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s;mix-blend-mode:difference}
+    #cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--lime);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0.5;mix-blend-mode:difference;transition:width 0.3s,height 0.3s}
+    /* particle background canvas */
+    #particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.6}
+    /* make main content render above background */
+    header, main, footer, nav, section{position:relative;z-index:2}
+    /* gradient text utility */
+    .gradient-text{background:linear-gradient(90deg,var(--lime),#7fff9a 30%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+    /* subtle reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    </style>
+
+	<script defer src="scripts.js"></script>
 </head>
 <body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="particle-canvas"></canvas>
+
     <header>
 	<div class="ascii-art">
             <!-- ASCII art goes here -->
@@ -165,7 +191,7 @@
             <h2> What am i currently doing ? </h2>
 			<p>As of now-</p><br>
 	<ul>
-	<li>Trying to understand more about theoretical Statistics<li>
+	<li>Trying to understand more about theoretical Statistics</li>
 	<li>Learning more about ML and concepts related to Neural Networks</li>
 	<li>Trying to stay statistically significant</li>
 	<li>Procrastinating(Always)</li>
@@ -176,5 +202,35 @@
     <footer>
         <p>&copy; 2025 Debaditya Chakraborty</p>
     </footer>
-    <script src="scripts.js" defer></script>
+        <script src="scripts.js" defer></script>
+
+        <script>
+        (function(){
+            /* CUSTOM CURSOR */
+            const cur=document.getElementById('cursor'), ring=document.getElementById('cursor-ring');
+            let mx=-100,my=-100,rx=-100,ry=-100;
+            document.addEventListener('mousemove',e=>{mx=e.clientX; my=e.clientY;});
+            (function loop(){ cur.style.left=mx+'px'; cur.style.top=my+'px'; rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop);})();
+            document.querySelectorAll('a,button').forEach(el=>{ el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='56px';ring.style.height='56px';}); el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';}); });
+
+            /* PARTICLES BACKGROUND */
+            (function(){
+                const c=document.getElementById('particle-canvas'); if(!c) return; const ctx=c.getContext('2d');
+                let W=window.innerWidth,H=window.innerHeight; c.width=W; c.height=H;
+                const N=80; const particles=[];
+                function resize(){W=window.innerWidth;H=window.innerHeight;c.width=W;c.height=H}
+                window.addEventListener('resize',resize);
+                for(let i=0;i<N;i++) particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.6,vy:(Math.random()-0.5)*0.6,r:Math.random()*1.6+0.6,alpha:Math.random()*0.5+0.15,col:Math.random()>0.6?'#c6f135':Math.random()>0.5?'#00e5ff':'#7fff9a'});
+                (function draw(){ ctx.clearRect(0,0,W,H); for(let i=0;i<N;i++){ for(let j=i+1;j<N;j++){ const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y; const d=Math.hypot(dx,dy); if(d<140){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(198,241,53,${0.08*(1-d/140)})`; ctx.lineWidth=0.6; ctx.stroke(); } } }
+                    particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.col; ctx.globalAlpha=p.alpha; ctx.shadowBlur=8; ctx.shadowColor=p.col; ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0; }); requestAnimationFrame(draw); })();
+            })();
+
+            /* APPLY GRADIENT TO HEADINGS (non-destructive) */
+            document.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('h1,h2').forEach(h=>h.classList.add('gradient-text')); });
+
+            /* SIMPLE REVEAL FOR ELEMENTS WITH .reveal */
+            const obs=new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); } }); },{threshold:0.12});
+            document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        })();
+        </script>
 </body>
